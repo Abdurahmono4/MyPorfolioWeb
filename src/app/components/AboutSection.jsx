@@ -51,18 +51,17 @@ const AboutSection = () => {
     });
   };
   return (
-    <section className="text-white " id="about">
+    <section id="about" className="text-white py-4">
       <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-        <Image src="/image/aboutContent.jpg" width={500} height={500} />
+        <Image src="/image/aboutContent.jpg" width={500} height={500} alt="" />
         <div className="mt-4 md:mt-0  ">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
           <p className="text-base lg:text-lg ">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            doloribus cupiditate quis iure suscipit, beatae expedita ad magnam
-            labore! Provident earum perspiciatis possimus at, enim, dolorum ex
-            quia consequuntur asperiores sapiente nulla quasi! Illum culpa
-            tempora hic unde excepturi commodi veritatis natus voluptates animi
-            facilis, eum ratione vero labore ducimus.
+            Hi! I am Olimjonov Rahmonjon, a passionate Frontend Developer who
+            thrives on creating visually stunning, user-friendly websites and
+            web applications. With a strong foundation in web technologies and a
+            keen eye for design, I specialize in crafting seamless digital
+            experiences that engage users and exceed client expectations.
           </p>
           <div className="flex flex-row justify-start mt-8 gap-4">
             <TabButton

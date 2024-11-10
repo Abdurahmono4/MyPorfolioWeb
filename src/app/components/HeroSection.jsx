@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
+import Link from "next/link";
 const HeroSection = () => {
   return (
     <section className="lg:py-16">
@@ -35,17 +36,24 @@ const HeroSection = () => {
             />
           </h1>
           <p className="text-[#ADB7BE] sm:text-lg mb-6 lg:text-xl  text-base whitespace-pre-line  ">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-            tempora optio eaque! Blanditiis.
+            A motivated Frontend Developer with a strong commitment to
+            contributing to a highly collaborative work environment.
           </p>
           <div>
-            <button className="rounded-full px-6 py-3 mr-4  w-full bg-gradient-to-br from-primary-500 via-indigo-500 to-secondary-500 sm:w-fit  hover:bg-slate-200 text-white">
-              Hire me
-            </button>
+            <Link href="#email">
+              <button
+                className="rounded-full px-6 py-3 mr-4  w-full bg-gradient-to-br from-primary-500 via-indigo-500 to-secondary-500 sm:w-fit  hover:bg-slate-200 text-white"
+                id="contact"
+              >
+                Hire me
+              </button>
+            </Link>
             <button className="rounded-full px-1 py-1 bg-gradient-to-br from-primary-500 via-purple-500 to-secondary-500  w-full sm:w-fit hover:bg-slate-800 text-white  mt-3">
-              <span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2 ">
-                Download CV
-              </span>
+              <Link download="Olimjonov_Rahmonjon_CV.pdf" href="/cv/my-cv.pdf">
+                <span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2 ">
+                  Download CV
+                </span>
+              </Link>
             </button>
           </div>
         </motion.div>
