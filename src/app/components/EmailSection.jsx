@@ -5,7 +5,7 @@ import GitHubIcon from "../../../public/github256.svg";
 import LinkedIn from "../../../public/in.svg";
 import Link from "next/link";
 import Image from "next/image";
-
+import Telegram from "../../../public/telegram.png";
 const EmailSection = () => {
   // State'lar: xabar yuborilganmi yoki xatolik yuz berishi
   const [emailSubmitted, setEmailSubmitted] = useState(false);
@@ -79,6 +79,15 @@ const EmailSection = () => {
             <Image
               src={LinkedIn}
               alt="LinkedIn Icon"
+              width={50}
+              height={50}
+              className="text-white bg-white rounded"
+            />
+          </Link>
+          <Link href="https://t.me/sherlock_20_00_04">
+            <Image
+              src={Telegram}
+              alt="Telegram Icon"
               width={50}
               height={50}
               className="text-white bg-white rounded"
