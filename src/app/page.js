@@ -1,3 +1,5 @@
+import Navbar from "./components/Navbar";
+import BackgroundSection from "./components/BackgroundSection";
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
 import ProjectsSection from "./components/ProjectsSection";
@@ -7,11 +9,12 @@ import EmailSection from "./components/EmailSection";
 export default function Home() {
   return (
     <main className="folio">
-      <header className="mast"><a href="#home">Rahmonjon Olimjonov</a><nav aria-label="Main navigation"><a href="#projects">Work</a><a href="#research">Research</a><a href="#about">About</a><a href="#email">Contact</a></nav></header>
+      <Navbar />
       <HeroSection />
+      <AboutSection />
+      <BackgroundSection />
       <ProjectsSection />
       <ResearchSection />
-      <AboutSection />
       <EmailSection />
     </main>
   );

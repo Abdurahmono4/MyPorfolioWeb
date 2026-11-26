@@ -20,17 +20,6 @@ const TAB_DATA = [
     ),
   },
   {
-    title: "Education",
-    id: "education",
-    content: (
-      <ul className="list-disc pl-2">
-        <li>MSc in Intelligent Engineering Systems (in progress)</li>
-        <li>Fergana State Technical University, September 2022 – July 2026. Bachelor’s degree in Information and Communication Systems for Technological Process Control. Qualification: Software Engineer.</li>
-        <li>Frontend JavaScript, Najot Ta’lim, October 2023 – July 2024</li>
-      </ul>
-    ),
-  },
-  {
     title: "Certifications",
     id: "certifications",
     content: (
@@ -59,7 +48,7 @@ const AboutSection = () => {
         <div className="mt-4 md:mt-0  ">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
           <p className="text-base lg:text-lg ">
-            I am a frontend developer in Fergana, Uzbekistan, currently studying Intelligent Engineering Systems at master’s level. I worked at HUMANS for one year (2025–2026) as a Sales Associate and Technical Support Operator.
+            I am a frontend developer in Fergana, Uzbekistan, currently studying Intelligent Engineering Systems at master’s level. My interests connect web development with industrial monitoring.
           </p>
           <div className="flex flex-wrap justify-start mt-8 gap-4">
             <TabButton
@@ -68,13 +57,6 @@ const AboutSection = () => {
             >
               Skills
             </TabButton>
-            <TabButton
-              selectTab={() => handleTabChange("education")}
-              active={tab === "education"}
-            >
-              {""}
-              Education{""}
-            </TabButton>{" "}
             <TabButton
               selectTab={() => handleTabChange("certifications")}
               active={tab === "certifications"}
