@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.hero-portrait { opacity:0; animation:portrait-fade 16s ease-in-out infinite; }
+@keyframes portrait-fade {
+  0%, 42%, 100% { opacity:0; }
+  50%, 92% { opacity:1; }
+}
+@media (prefers-reduced-motion: reduce) { .hero-portrait { animation:none; opacity:1; } }
+
 .hero-rotation { display: grid; }
 .hero-rotation > span { grid-area: 1 / 1; opacity: 0; animation: hero-title 24s ease-in-out infinite; background:linear-gradient(115deg,#fff 15%,#e9d5ff 60%,#c4b5fd); background-clip:text; color:transparent; }
 .hero-rotation > span:nth-child(1) { animation-delay: -1s; }

@@ -37,7 +37,7 @@ const HeroSection = () => {
         </div>
         <div className="md:col-span-4 place-self-center ml-4 mt-4 lg:mt-0 "
         >
-          <div className="rounded-full bg-[#181818] w-[230px] max-w-full aspect-square lg:w-[350px] relative">
+          <div className="overflow-hidden rounded-full bg-[#181818] w-[230px] max-w-full aspect-square lg:w-[350px] relative">
             <Image
               src="/image/main.png"
               alt="Rahmonjon Olimjonov"
@@ -45,6 +45,8 @@ const HeroSection = () => {
               height={300}
               className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 "
             />
+            <Image src="/image/rahmonjon-portrait.png" alt="" fill sizes="(min-width:1024px) 350px, 230px"
+              className="hero-portrait object-cover object-[center_48%]" />
           </div>
         </div>
       </div>
