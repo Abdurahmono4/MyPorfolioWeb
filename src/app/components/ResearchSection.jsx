@@ -1,17 +1,5 @@
-const manuscripts = [
-  {
-    title: "Development of an ESP32- and IoT-Based System for Remote Monitoring of Pressure and Flow Rate in Oil Pipelines",
-    authors: "A. A. Rakhimov and R. O. Olimjonov",
-    summary: "An ESP32 sends pressure and flow measurements to a React dashboard. In preliminary tests on a water rig, the prototype detected a simulated leak in under two seconds. Industrial use would require further calibration and field testing.",
-    file: "/research/esp32-pipeline-monitoring.docx",
-  },
-  {
-    title: "Technologies for Presenting Uzbek Digital Texts in Sign Language and Prospects for SignBridgeUZ",
-    authors: "R. Olimjonov",
-    summary: "This review compares seven sign-language datasets and modelling approaches. It proposes a collection linking historical texts, modern Uzbek interpretations and expert-reviewed sign videos. The proposed evaluation asks whether signers understand the videos and whether the translations preserve the source meaning.",
-    file: "/research/signbridgeuz.docx",
-  },
-];
+import Link from "next/link";
+import { manuscripts } from "../research/manuscripts";
 
 export default function ResearchSection() {
   return (
@@ -26,7 +14,8 @@ export default function ResearchSection() {
             <h3>{paper.title}</h3>
             <p className="mb-4">{paper.authors}</p>
             <p>{paper.summary}</p>
-            <a className="mt-4" href={paper.file} download aria-label={`Download manuscript: ${paper.title} (DOCX)`}>Download manuscript (DOCX)</a>
+            <div className="mt-4 flex flex-wrap items-center gap-x-5"><Link href={`/research/${paper.slug}`}>Read abstract →</Link>
+            <a href={paper.file} download aria-label={`Download manuscript: ${paper.title} (DOCX)`}>Download manuscript (DOCX)</a></div>
           </article>
         ))}
       </div>
