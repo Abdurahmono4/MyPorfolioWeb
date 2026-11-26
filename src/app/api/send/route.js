@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
 // Initialize Resend client with API key
-const resend = new Resend(process.env.api_key);
+const resend = process.env.api_key ? new Resend(process.env.api_key) : null;
 const fromEmail = process.env.FROM_EMAIL;
 
 // Helper function to handle rate limits (retry logic)
@@ -44,10 +44,10 @@ export async function POST(req) {
     }
 
     // Check if FROM_EMAIL environment variable is set
-    if (!fromEmail) {
+    if (!fromEmail || !resend) {
       return NextResponse.json(
         {
-          error: "The 'FROM_EMAIL' environment variable is not set.",
+          error: "Please use the email or Telegram link to get in touch.",
         },
         { status: 500 }
       );
