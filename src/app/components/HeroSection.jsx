@@ -7,8 +7,10 @@ const HeroSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-x-1">
         <div className="md:col-span-8 place-self-center text-center sm:text-left justify-self-start "
         >
-          <h1 className="mb-3 text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-7xl">
-            Rahmonjon Olimjonov
+          <h1 aria-label="Rahmonjon Olimjonov" className="hero-rotation mb-3 text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-7xl">
+            {["Rahmonjon Olimjonov", "Web Developer", "Software Developer"].map(label => (
+              <span key={label} aria-hidden="true">{label}</span>
+            ))}
           </h1>
           <p className="mb-4 text-xl font-semibold text-purple-300">Frontend Developer · Software Engineer</p>
           <p className="text-[#ADB7BE] sm:text-lg mb-6 lg:text-xl  text-base whitespace-pre-line  ">
