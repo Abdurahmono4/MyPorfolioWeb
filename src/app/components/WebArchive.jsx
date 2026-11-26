@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 const websites = [
+  ["Smart School", "school-lyart-psi.vercel.app", "smart-school.jpg"],
   ["Book Marketplace", "market-place-co1h.vercel.app", "1.png"],
   ["Interactive Portfolio", "myadmirableweb.netlify.app", "2.png"],
   ["Recipe Collection", "main-exam-seven.vercel.app", "3.png"],
