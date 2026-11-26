@@ -15,7 +15,7 @@ const TAB_DATA = [
         <li>React.js</li>
         <li>Next.js</li>
         <li>Tailwind CSS</li>
-        <li>Daisy UI</li>
+        <li>TypeScript, Redux Toolkit, Sass and daisyUI</li>
       </ul>
     ),
   },
@@ -24,8 +24,9 @@ const TAB_DATA = [
     id: "education",
     content: (
       <ul className="list-disc pl-2">
-        <li>Najot Education IT educational center</li>
-        <li>Fergana Polytechnic Institute, Uzbekistan</li>
+        <li>MSc in Intelligent Engineering Systems (in progress)</li>
+        <li>Fergana State Technical University, September 2022 – July 2026. Bachelor’s degree in Information and Communication Systems for Technological Process Control. Qualification: Software Engineer.</li>
+        <li>Frontend JavaScript, Najot Ta’lim, October 2023 – July 2024</li>
       </ul>
     ),
   },
@@ -34,8 +35,9 @@ const TAB_DATA = [
     id: "certifications",
     content: (
       <ul className="list-disc pl-2">
-        <li>Certified ReactJS Developer</li>
-        <li>Common European Framework of Reference for Languages (CEFR)</li>
+        <li>Standard Frontend React JS, Najot Ta’lim (July 2024)</li>
+        <li>English B2, Common European Framework of Reference for Languages (CEFR)</li>
+        <li>Five Million Coders</li>
       </ul>
     ),
   },
@@ -57,13 +59,9 @@ const AboutSection = () => {
         <div className="mt-4 md:mt-0  ">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
           <p className="text-base lg:text-lg ">
-            Hi! I am Olimjonov Rahmonjon, a passionate Frontend Developer who
-            thrives on creating visually stunning, user-friendly websites and
-            web applications. With a strong foundation in web technologies and a
-            keen eye for design, I specialize in crafting seamless digital
-            experiences that engage users and exceed client expectations.
+            I am a frontend developer in Fergana, Uzbekistan, currently studying Intelligent Engineering Systems at master’s level. I worked at HUMANS for one year (2025–2026) as a Sales Associate and Technical Support Operator.
           </p>
-          <div className="flex flex-row justify-start mt-8 gap-4">
+          <div className="flex flex-wrap justify-start mt-8 gap-4">
             <TabButton
               selectTab={() => handleTabChange("skills")}
               active={tab === "skills"}

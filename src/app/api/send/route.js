@@ -56,14 +56,14 @@ export async function POST(req) {
     // Debugging the input data
     console.log("Sending email...");
     console.log("From:", fromEmail);
-    console.log("To:", [fromEmail, email]);
     console.log("Subject:", subject);
     console.log("Message:", message);
 
     // Prepare the email data
     const emailData = {
       from: fromEmail,
-      to: [fromEmail, email],
+      to: ["olimjonovrahmonjon20@gmail.com"],
+      replyTo: email,
       subject: subject,
       html: `
         <h1>${subject}</h1>

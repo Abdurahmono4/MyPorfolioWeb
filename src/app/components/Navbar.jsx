@@ -35,7 +35,7 @@ const Navbar = () => {
           href={"/"}
           className="text-2xl md:text-5xl bg-[#121212] text-white font-semibold"
         >
-          LOGO
+          Rahmonjon
         </Link>
         <div className="mobile-menu block md:hidden">
           {!Open ? (

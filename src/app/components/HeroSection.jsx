@@ -21,13 +21,11 @@ const HeroSection = () => {
             <br />
             <TypeAnimation
               sequence={[
-                "Olimjonov Rahmonjon",
+                "Rahmonjon Olimjonov",
                 1000,
-                "Web Developer",
+                "Frontend Developer",
                 1000,
-                "Student",
-                1000,
-                "UI/UX Designer",
+                "Software Engineer",
                 1000,
               ]}
               wrapper="span"
@@ -36,8 +34,7 @@ const HeroSection = () => {
             />
           </h1>
           <p className="text-[#ADB7BE] sm:text-lg mb-6 lg:text-xl  text-base whitespace-pre-line  ">
-            A motivated Frontend Developer with a strong commitment to
-            contributing to a highly collaborative work environment.
+            I build web interfaces with React and Next.js. My engineering work explores how IoT sensors can help monitor oil pipelines remotely.
           </p>
           <div>
             <Link href="#email">
