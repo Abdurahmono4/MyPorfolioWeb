@@ -1,96 +1,26 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-// Initialize Resend client with API key
-const resend = process.env.api_key ? new Resend(process.env.api_key) : null;
-const fromEmail = process.env.FROM_EMAIL;
-
-// Helper function to handle rate limits (retry logic)
-async function sendEmailWithRetry(emailData, retries = 3, delay = 1000) {
-  try {
-    // Try to send the email
-    const data = await resend.emails.send(emailData);
-    console.log("Email sent successfully:", data);
-    return data; // Return the successful response
-  } catch (error) {
-    // If rate limit exceeded (429), retry after waiting
-    if (error.statusCode === 429 && retries > 0) {
-      console.log(
-        `Rate limit exceeded. Retrying in ${delay / 1000} seconds...`
-      );
-      await new Promise((resolve) => setTimeout(resolve, delay)); // Wait before retrying
-      return sendEmailWithRetry(emailData, retries - 1, delay * 2); // Exponential backoff
-    }
-
-    // If not a rate-limit error or retries exhausted, log and throw the error
-    console.error("Error sending email:", error);
-    throw error;
+export async function POST(request) {
+  const apiKey = process.env.RESEND_API_KEY || process.env.api_key;
+  const sender = process.env.FROM_EMAIL;
+  if (!apiKey || !sender) {
+    return NextResponse.json({ error: "Email delivery is unavailable. Open your email app to send your message." }, { status: 503 });
   }
-}
-
-export async function POST(req) {
+  const input = await request.json().catch(() => null);
+  const { email, subject, message } = input || {};
+  if (![email, subject, message].every(value => typeof value === "string" && value.trim()) ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254 || subject.length > 160 || message.length > 5000) {
+    return NextResponse.json({ error: "Enter a valid email, subject and message." }, { status: 400 });
+  }
   try {
-    // Parse the request body
-    const { email, subject, message } = await req.json();
-
-    // Validate inputs
-    if (!email || !subject || !message) {
-      return NextResponse.json(
-        {
-          error: "Missing required fields: email, subject, or message.",
-        },
-        { status: 400 }
-      );
-    }
-
-    // Check if FROM_EMAIL environment variable is set
-    if (!fromEmail || !resend) {
-      return NextResponse.json(
-        {
-          error: "Please use the email or Telegram link to get in touch.",
-        },
-        { status: 500 }
-      );
-    }
-
-    // Debugging the input data
-    console.log("Sending email...");
-    console.log("From:", fromEmail);
-    console.log("Subject:", subject);
-    console.log("Message:", message);
-
-    // Prepare the email data
-    const emailData = {
-      from: fromEmail,
-      to: ["olimjonovrahmonjon20@gmail.com"],
-      replyTo: email,
-      subject: subject,
-      html: `
-        <h1>${subject}</h1>
-        <p>Thank you for contacting us!</p>
-        <p>New message submitted:</p>
-        <p>${message}</p>
-      `,
-    };
-
-    // Attempt to send the email with retry logic for rate-limiting
-    const data = await sendEmailWithRetry(emailData);
-
-    // Log the successful email response
-    console.log("Resend response:", data);
-
-    // Return the response data as JSON
-    return NextResponse.json(data);
-  } catch (error) {
-    // Log unexpected errors
-    console.error("Error sending email:", error);
-
-    // Return a user-friendly error message
-    return NextResponse.json(
-      {
-        error: error.message || "An unexpected error occurred",
-      },
-      { status: 500 }
-    );
+    const { data, error } = await new Resend(apiKey).emails.send({
+      from: sender, to: ["olimjonovrahmonjon20@gmail.com"], replyTo: email,
+      subject: "Portfolio inquiry: " + subject, text: "From: " + email + "\n\n" + message
+    });
+    if (error || !data?.id) throw new Error("Delivery unavailable");
+    return NextResponse.json({ accepted: true });
+  } catch {
+    return NextResponse.json({ error: "Email delivery is unavailable. Open your email app to send your message." }, { status: 502 });
   }
 }
